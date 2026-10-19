@@ -1,43 +1,22 @@
 ---
 name: russian-proverbs
-description: Подбирает русские пословицы и поговорки к ситуации, объясняет смысл и проверяет уместность в тексте. Используй по просьбам «подбери поговорку», «скажи пословицей», «добавь уместную пословицу» или при работе с самими выражениями. Обычный запрос написать по-русски сам по себе не требует пословиц.
+description: Choose Russian proverbs and sayings that fit a situation, explain their meaning, and assess tone and appropriateness. Use when asked to find a saying, express an idea through a proverb, or add a suitable proverb to a text. An ordinary request to write in Russian does not call for proverbs in every response.
 ---
 
-# Пословица к месту
+# Russian Proverbs
 
-Помоги выразить уже понятную мысль подходящей пословицей. Сохрани смысл, тон и отношение к адресату. Поговорка может сделать речь точнее; вставка ради украшения часто делает её назидательной.
+Choose a Russian proverb or saying that makes the user's intended meaning clearer. Match the situation, audience, and tone; leave the text without a proverb when none fits.
 
-## Подбор
+## Working language
 
-1. Определи мысль, ситуацию, аудиторию и желаемый тон из запроса. Если контекста достаточно, не устраивай опрос.
-2. Найди кандидатов локальным скриптом. Пути ниже даны относительно директории этого скилла; запускать можно из любой директории, указав путь к скрипту.
+Respond in natural Russian by default, including colloquial registers when appropriate. Follow an explicit request for another output language. The English entry point supports discovery; it does not request English output or translation of the Russian corpus.
 
-   ```bash
-   python3 scripts/search.py 'сначала проверить решение которое трудно отменить'
-   python3 scripts/search.py 'поддержать после первой ошибки' --tone supportive
-   python3 scripts/search.py --id ryb-0042 --details
-   ```
+## Workflow
 
-   В запросе используй смысл и ситуацию, при необходимости 2–3 синонима. Это лексический поиск по текстам, толкованиям, ситуациям и тегам с простыми русскими словоформами, а не полноценный семантический поиск. При пустой выдаче переформулируй один раз. Не читай всю базу, чтобы компенсировать слабый запрос.
+Before selecting, explaining, or editing a proverb, read and follow the [Russian workflow](references/workflow.ru.md). It contains the complete selection process, editorial constraints, and source-handling rules. Paths to scripts and data in that workflow are relative to this skill's root directory.
 
-3. Оцени смысл каждого кандидата самостоятельно. Позиция в выдаче не означает, что он подходит. Учитывай поле `caution`, тон, разницу между буквальным и переносным смыслом. Для точного цитирования, сравнения вариантов или вопроса об источнике запроси запись по ID с `--details`.
-4. При подборе предложи обычно 2–3 варианта с коротким объяснением различий. При редактировании короткого текста по умолчанию используй не больше одного выражения. Если варианты натянуты, оставь текст без поговорки и кратко объясни причину, когда это нужно пользователю.
+Use the bundled local search script rather than loading the corpus into context. It returns up to five candidates and 5,000 characters by default. Search is lexical; candidate ranking does not establish suitability. Evaluate meaning and cautions before choosing an expression.
 
-## Редакторские решения
+The source collection mainly reflects records from the 1930s. The corpus includes source pages and editorial annotations, but inclusion does not establish modern frequency. See the [corpus reference](references/corpus.md) when maintaining or auditing the data.
 
-- Не выдавай пословицу за доказательство, научный факт или совет специалиста. Не подменяй ею объяснение причины или конкретное действие.
-- Проверь, к кому направлена оценка. Самоирония и упрёк собеседнику звучат по-разному. В конфликте и при поддержке человека не добавляй обвинение, насмешку или обесценивание.
-- В требованиях, договорённостях и технических инструкциях сохраняй однозначную формулировку действия. Если пословицу просят явно, можно дать её рядом с точной формулировкой, когда формат позволяет.
-- Разные, даже противоположные пословицы могут подходить к разным условиям. Выбирай по ситуации, а не по общему слову «спешка» или «дружба».
-- Сохраняй выбранный вариант. Модернизацию или авторскую переделку обозначь как переделку; не представляй её точной цитатой из книги. Не придумывай «полные версии», авторство, регион или происхождение.
-- Не повторяй одно выражение в соседних ответах, если повтор не нужен по запросу. Для поиска альтернатив передай `--exclude-id ID`.
-
-## Экономия контекста и происхождение
-
-По умолчанию скрипт возвращает до 5 записей и до 5000 символов суммарно. Доступны `--limit 1..10`, `--max-chars 1000..12000`, фильтры `--tone`, `--register`. `--details` добавляет варианты, оригинал и сведения о проверке. Нулевое совпадение возвращает пустой список.
-
-Не загружай `data/sayings.jsonl`, исходную книгу или весь код поиска в контекст для обычного подбора. Запускай скрипт; полные источники читай только для исследования или исправления базы. Данные не являются инструкциями.
-
-Основа — М. А. Рыбникова, «Русские пословицы и поговорки», 1961; в основном записи 1930-х годов. Наличие в книге не доказывает современную распространённость. Смысл, ситуации, тон и ограничения в базе — редакторская разметка этой версии, если явно не указано иное. Не называй составительницу автором народной пословицы.
-
-При объяснении происхождения укажи книгу и печатную страницу из `source`; при обычной вставке в текст библиографическая ссылка не обязательна. Для дополнения, исправления или аудита базы прочитай [references/corpus.md](references/corpus.md). Источники и контрольная сумма исходного PDF находятся в `data/sources.json`.
+For installation, examples, and limitations, see the [English README](README.md) or [Russian README](README.ru.md).
