@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "corpus_version": "1.0.0",
+  "corpus_version": "1.1.0",
   "created": "2026-10-19",
   "sources": [
     {
@@ -29,6 +29,6 @@
     "caution"
   ],
   "selection": "Рабочая выборка, не полный корпус; без приложения литературных афоризмов.",
-  "record_count": 228,
+  "record_count": 328,
   "variant_count": 13
 }

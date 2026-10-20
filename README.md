@@ -6,7 +6,7 @@ An Agent Skill for choosing Russian proverbs and sayings that fit the meaning, s
 
 The public `SKILL.md` entry point is in English; the [working instructions](references/workflow.ru.md) and corpus are in Russian. It is designed for Russian-language writing and conversation, including everyday colloquial speech. This English README introduces the skill to readers who work with Russian content; it does not turn it into an English-language proverb collection.
 
-The corpus contains **228 expressions and 13 variants** selected from M. A. Rybnikova's *Русские пословицы и поговорки* (*Russian Proverbs and Sayings*, 1961). Entries include source pages, brief meanings, usage situations, tone, and cautions. The agent can also leave a text without a proverb when none fits.
+The corpus contains **328 expressions and 13 variants** selected from M. A. Rybnikova's *Русские пословицы и поговорки* (*Russian Proverbs and Sayings*, 1961). Entries include source pages, brief meanings, usage situations, tone, and cautions. The agent can also leave a text without a proverb when none fits.
 
 ## Installation
 
